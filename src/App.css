@@ -5,3 +5,11 @@ body {
 .page {
   width: 100%;
 }
+.pic {
+  position: absolute;
+  left: 275px;
+  top: 47px
+}
+.pic img {
+  border-radius: 8px;
+}

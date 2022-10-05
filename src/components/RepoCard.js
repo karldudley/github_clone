@@ -38,7 +38,7 @@ export default function RepoCard({repo}) {
                 align="center"
                 title={
                     <Typography noWrap variant="overline">
-                       {repo.name.replaceAll(/[-_]/g, ' ')}
+                        {repo.name.replaceAll(/[-_]/g, ' ')}
                     </Typography>
                  }
             />
