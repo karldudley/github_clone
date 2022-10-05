@@ -7,7 +7,6 @@ import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TextField from '@mui/material/TextField';
-import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
 import './App.css';
@@ -79,14 +78,10 @@ function App() {
             </Button>
           </form>
           <br />  
-          <Container>
-            <Grid container spacing={3}>
-              {repos.map(renderRepo)}
-            </Grid>
-          </Container>
+          <Grid container spacing={3}>
+            {repos.map(renderRepo)}
+          </Grid>
         </div>
-
-
   );
 }
 
