@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import RepoDetails from "./RepoDetails";
+import RepoCard from "./components/RepoCard"
 
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 
 import './App.css';
 
@@ -38,17 +41,16 @@ function App() {
       url: `https://api.github.com/users/${name}/repos`,
     }).then (res => {
         setLoading(false);
-        setRepos(res.data);      
+        setRepos(res.data);
+        console.log(repos)    
     });
   }
 
   const renderRepo = (repo) => {
     return (
-      <div className="row" onClick={() => getDetails(repo.name)} key={repo.id}>
-        <h2 className="rep-name">
-          {repo.name}
-        </h2>
-      </div>
+      <Grid item xs={12} md={6} lg={4} key={repo.id}>
+        <RepoCard repo={repo} getDetails={getDetails}/>
+      </Grid>
     );
   }
 
@@ -93,9 +95,11 @@ function App() {
             {loading ? "Searching..." : "Search"}
             </Button>
           </form>
-          <div className="results-container">
+          <Container>
+          <Grid container spacing={3}>
             {repos.map(renderRepo)}
-          </div>
+          </Grid>
+          </Container>
         </div>
         <RepoDetails details={details} loading={detailsLoading} />
       </div>
