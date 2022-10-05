@@ -22,9 +22,11 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
+
 export default function RepoCard({repo}) {
     const [expanded, setExpanded] = React.useState(false);
     const [liked, setLiked] = useState(false)
+    let date = new Date(repo.created_at)
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -35,12 +37,10 @@ export default function RepoCard({repo}) {
             <CardHeader
 
                 title={
-                    <Typography gutterBottom variant="h5">
+                    <Typography noWrap variant="overline">
                        {repo.name.replaceAll('_', ' ')}
                     </Typography>
                  }
-                subheader="September 14, 2016"
-                
             />
             <CardActions disableSpacing>
                 {liked 
@@ -67,6 +67,7 @@ export default function RepoCard({repo}) {
                     <Typography paragraph>Forks: {repo.forks}</Typography>
                     <Typography paragraph>Stars: {repo.stargazers_count}</Typography>
                     <Typography paragraph>Language: {repo.language}</Typography>
+                    <Typography paragraph>Created on: {date.toDateString()}</Typography>
                     <Typography noWrap>
                         GitHub Link: <Link target="_blank" rel="noopener" underline="hover" href={repo.html_url}>{repo.html_url}</Link>
                     </Typography>
