@@ -51,7 +51,6 @@ function App() {
   }
 
   return (
-
         <div className="page">
           <Typography
             variant="h6"
@@ -80,9 +79,9 @@ function App() {
             </Button>
           </form>
           <Container>
-          <Grid container spacing={3}>
-            {repos.map(renderRepo)}
-          </Grid>
+            <Grid container spacing={3}>
+              {repos.map(renderRepo)}
+            </Grid>
           </Container>
         </div>
 

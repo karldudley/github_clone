@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { IconButton, Typography } from '@mui/material';
 import Link from '@mui/material/Link';
@@ -25,6 +24,7 @@ const ExpandMore = styled((props) => {
 
 export default function RepoCard({repo}) {
     const [expanded, setExpanded] = React.useState(false);
+    const [liked, setLiked] = useState(false)
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -43,12 +43,16 @@ export default function RepoCard({repo}) {
                 
             />
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon />
-                </IconButton>
+                {liked 
+                ?
+                    <IconButton color="error" aria-label="add to favorites" onClick={() => setLiked(!liked)}>
+                        <FavoriteIcon />
+                    </IconButton>
+                :
+                    <IconButton aria-label="add to favorites" onClick={() => setLiked(!liked)}>
+                        <FavoriteIcon />
+                    </IconButton>
+                }
                 <ExpandMore
                     expand={expanded}
                     onClick={handleExpandClick}
