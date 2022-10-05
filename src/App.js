@@ -16,6 +16,7 @@ import github from './images/github.png';
 function App() {
   const [name, setName] = useState('')
   const [owner, setOwner] = useState('')
+  const [ownerUrl, setOwnerUrl] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [repos, setRepos] = useState([])
@@ -23,6 +24,7 @@ function App() {
   useEffect(() => {
     setRepos([]);
     setOwner('')
+    setOwnerUrl('')
   }, [name])
 
 
@@ -45,7 +47,8 @@ function App() {
         setLoading(false);
         setRepos(res.data);
         setOwner(res.data[0].owner.avatar_url)
-        console.log(owner);
+        setOwnerUrl(res.data[0].owner.html_url)
+        console.log(repos);
         
     }).catch((error) => {
         setLoading(false);
@@ -99,7 +102,9 @@ function App() {
           spellCheck="false"
       />
       <div className="pic">
-        <img src={owner} alt="" width="100"/>
+        <a href={ownerUrl} target="blank">
+          <img src={owner} width="100"/>
+        </a>
       </div>
         <br /><br />
         <Button
