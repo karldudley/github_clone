@@ -34,11 +34,11 @@ export default function RepoCard({repo}) {
 
     return (
         <Card sx={{ maxWidth: 345 }} elevation={3}>
-            <CardHeader
-
+            <CardHeader 
+                align="center"
                 title={
                     <Typography noWrap variant="overline">
-                       {repo.name.replaceAll('_', ' ')}
+                       {repo.name.replaceAll(/[-_]/g, ' ')}
                     </Typography>
                  }
             />
