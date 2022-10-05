@@ -48,7 +48,6 @@ function App() {
         setRepos(res.data);
         setOwner(res.data[0].owner.avatar_url)
         setOwnerUrl(res.data[0].owner.html_url)
-        console.log(repos);
         
     }).catch((error) => {
         setLoading(false);
