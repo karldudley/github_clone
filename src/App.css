@@ -17,53 +17,8 @@
   width: 75%;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid salmon;
+  border-right: 1px solid #4285F4;
 }
-
-/* .form {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-} */
-
-/* .input {
-  width: 30%;
-  height: 40px;
-  border: none;
-  border-radius: 6px;
-  font-size: 18px;
-  padding-left: 10px;
-  background-color: rgba(255, 255, 255, .3);
-  color: salmon;
-} */
-
-/* .input:focus {
-  border: 1px solid salmon;
-  outline: none;
-} */
-
-/* .input::placeholder {
-  color: #282D35;
-} */
-
-/* .button {
-  height: 100%;
-  width: 10%;
-  background-color: salmon;
-  border-radius: 5px;
-  border: none;
-  font-size: 18px;
-  color: #282D35;
-  box-sizing: content-box;
-  margin-left: 10px;
-  cursor: pointer;
-} */
-
-/* .button:focus {
-  outline: none;
-} */
 
 .results-container {
   margin-top: 10px;
@@ -88,12 +43,12 @@
 }
 
 .row > h2 {
-  color: salmon;
+  color: #4285F4;
   pointer-events: auto;
 }
 
 .row:hover {
-  background-color: salmon;
+  background-color: #4285F4;
 }
 
 .row > h2:hover {
@@ -127,10 +82,10 @@
 }
 
 .value {
-  color: salmon;
+  color: #4285F4;
 }
 
 .loader {
-  color: salmon;
+  color: #4285F4;
   margin-left: 5%;
 }
