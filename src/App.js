@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
@@ -8,14 +9,30 @@ import './App.css';
 
 function App() {
   const [name, setName] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [repos, setRepos] = useState([])
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     if (name) {
-      console.log(name);
-      
+      searchRepos();
     }
+  }
+
+  const searchRepos = () => {
+    setLoading(true);
+    axios({
+      method: "get",
+      url: `https://api.github.com/users/${name}/repos`,
+    }).then (res => {
+        setLoading(false);
+        setRepos(res.data);
+        console.log(repos);
+        
+    });
   }
 
   return (
@@ -33,6 +50,7 @@ function App() {
             <TextField
               onChange={(e) => setName(e.target.value)}
               label="GitHub Username"
+
               variant="outlined"
               color="primary"
               required
@@ -43,7 +61,7 @@ function App() {
               variant="contained"
               endIcon={<KeyboardArrowRightIcon/>}
             >
-            Submit
+            {loading ? "Searching..." : "Search"}
             </Button>
           </form>
         </div>
