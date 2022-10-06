@@ -102,7 +102,7 @@ function App() {
       />
       <div className="pic">
         <a href={ownerUrl} target="blank">
-          <img src={owner} width="100"/>
+          <img src={owner} alt="" width="100"/>
         </a>
       </div>
         <br /><br />
@@ -119,7 +119,7 @@ function App() {
       </form>
       <br />
       <Grid container spacing={3}>
-        {(error)  ? <Alert severity="error">This user could not be found. Please try again!</Alert> 
+        {(error)  ? <Alert severity="error">This username could not be found.</Alert> 
                   : repos.map(renderRepo)
         }
       </Grid>
