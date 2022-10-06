@@ -7,8 +7,8 @@ import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
 import Alert from '@mui/material/Alert';
+import Masonry from 'react-masonry-css'
 
 import './App.css';
 import github from './images/github.png';
@@ -20,6 +20,13 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [repos, setRepos] = useState([])
+
+  const breakpoints = {
+    default: 4,
+    1500: 3,
+    1100: 2,
+    700: 1
+  }
 
   useEffect(() => {
     setRepos([]);
@@ -57,9 +64,9 @@ function App() {
 
   const renderRepo = (repo) => {
     return (
-      <Grid item xs={12} sm= {6} md={4} lg={3} key={repo.id}>
+      <div key={repo.id}>
         <RepoCard repo={repo}/>
-      </Grid>
+      </div>
     );
   }
 
@@ -78,6 +85,7 @@ function App() {
           onChange={(e) => setName(e.target.value)}
           label="GitHub Username"
           variant="outlined"
+          style = {{width: 230}}
           sx={{
             ".MuiOutlinedInput-root": {
               flexDirection: "row"
@@ -118,11 +126,15 @@ function App() {
         
       </form>
       <br />
-      <Grid container spacing={3}>
+      <Masonry
+        breakpointCols={breakpoints}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {(error)  ? <Alert severity="error">This username could not be found.</Alert> 
                   : repos.map(renderRepo)
         }
-      </Grid>
+      </Masonry>
 
       </div>
   );
