@@ -103,7 +103,7 @@ function App() {
               />
             )
           }}
-          placeholder="Enter GitHub Username"
+          placeholder="Enter Username"
           color="primary"
           required
           spellCheck="false"
